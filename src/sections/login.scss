@@ -1,0 +1,133 @@
+$primary-color: #5A1AAB;
+$secondary-color: white;
+$default-color: #d5dfe0;
+$white-color: white;
+$danger-color: #e74a25;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: $primary-color;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: $primary-color;
+}
+
+body {
+  margin: 0;
+  background-color: #1C1E33;;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.auth-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-login{
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  border-radius: 15px;
+  background: #141627;
+  backdrop-filter: blur(9.5px);
+  padding: 80px 100px;
+  justify-content: center;
+  align-items: center;
+  gap: 46px;
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  width: 100%;
+}
+
+.text-input {
+  display: flex;
+  padding: 12px 15px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  background: rgba(217, 217, 217, 0.10);
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.label-input{
+  color: $white-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: $secondary-color;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: $default-color;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 8px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &.btn-primary {
+    color: $white-color;
+    background-color: $primary-color;
+    border-color: $primary-color;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      border-color: darken($primary-color, 10%);
+    }
+  }
+  &.btn-sm {
+    font-size: 0.875rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.2rem;
+    height: 1.8rem;
+  }
+  &.btn-lg {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+  }
+}
