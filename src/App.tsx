@@ -1,10 +1,25 @@
-import {LoginForm} from "./sections/LoginForm.tsx";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+import {LoginForm} from "./sections/LoginForm";
+import {Dashboard} from "./sections/Dashboard";
 
 function App() {
 
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <LoginForm />
+        },
+        {
+            path: "/home",
+            element: <Dashboard />
+        },
+    ])
+
+
   return (
     <>
-        <LoginForm />
+        <RouterProvider router={router} />
     </>
   )
 }

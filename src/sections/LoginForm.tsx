@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './login.scss';
 import logo from '../assets/logo-svg.svg';
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 type LoginFormProps = {
     onLoginFormSubmit2?: (username: string, password: string) => void;
@@ -10,6 +11,9 @@ type LoginFormProps = {
 
 
 export const LoginForm: React.FC<LoginFormProps> = () => {
+    const navigate = useNavigate();
+    const [error, setError] = useState<boolean>(false);
+    const [message, setMessage] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -25,9 +29,19 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
         event.preventDefault();
         console.log('username: ', username, 'password: ', password);
         try {
-            const response = await axios.post('http://localhost:8888/API_Flexio/login_master', {email: username, password});
+            const {data} = await axios.post('http://localhost:8888/API_Flexio/login_master', {email: username, password});
+            const {message, success, data: data2} = data;
 
-            console.log(response.data);
+            if (!success) {
+                console.error(message);
+                setError(true);
+                setMessage(message);
+                return;
+            }
+
+            console.log(message, success, data2);
+
+            navigate('/home');
         } catch (error) {
             console.error(error);
         }
@@ -50,6 +64,9 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
                     <input className="text-input" type="password" id="password" value={password} onChange={handlePasswordChange} />
                 </div>
                 <button className="btn btn-primary block" type="submit">Iniciar sesión</button>
+                {
+                    error && <div className="error-message">{message}</div>
+                }
             </form>
         </div>
     );
